@@ -1,0 +1,21 @@
+# load modules for doing math
+import numpy as np
+import numpy.linalg as LA
+
+def get_segmentation(clustering):
+    intervals = []
+    end_frame = -1
+    curr_label = None
+    for frame,label in enumerate(clustering.append(None)):
+        if label != curr_label:
+            if end_frame > 0:
+                last_interval = {}
+                end_frame = frame-1
+                last_interval["xmin"] = start_frame
+                last_interval["xmax"] = end_frame
+                last_interval["text"] = str(curr_label)
+                intervals.append(last_interval)
+            start_frame = frame
+            curr_label = label
+    return intervals
+    
